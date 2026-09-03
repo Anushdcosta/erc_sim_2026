@@ -377,7 +377,7 @@ bool GazeboSimSystem::initSim(
           bool vel = interface_info.name == "velocity";
           if (vel) {mimic_joint.interfaces_to_mimic.push_back(hardware_interface::HW_IF_VELOCITY);}
           bool eff = interface_info.name == "effort";
-          if (vel) {mimic_joint.interfaces_to_mimic.push_back(hardware_interface::HW_IF_EFFORT);}
+          if (eff) {mimic_joint.interfaces_to_mimic.push_back(hardware_interface::HW_IF_EFFORT);}
           return pos || vel || eff;
         });
       if (state_mimicked_interface == joint_info_mimicked.state_interfaces.end()) {

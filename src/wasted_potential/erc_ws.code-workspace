@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../../root/erc_images"
+		},
+		{
+			"path": "../../../../root"
+		}
+	],
+	"settings": {}
+}

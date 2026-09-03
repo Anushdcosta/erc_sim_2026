@@ -1578,6 +1578,9 @@
   <gazebo reference="gripper_left_grasping_link">
     <material>Gazebo/Blue</material>
     <turnGravityOff>true</turnGravityOff>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <joint name="gripper_left_grasping_frame_joint" type="fixed">
     <parent link="gripper_left_base_link"/>
@@ -1869,38 +1872,59 @@
   <!-- Gazebo config -->
   <gazebo reference="gripper_left_inner_finger_left_link">
     <material>Gazebo/White</material>
-    <mu1>0.9</mu1>
-    <mu2>0.9</mu2>
+    <mu1>100.0</mu1>
+    <mu2>100.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <gazebo reference="gripper_left_inner_finger_right_link">
     <material>Gazebo/White</material>
-    <mu1>0.9</mu1>
-    <mu2>0.9</mu2>
+    <mu1>100.0</mu1>
+    <mu2>100.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <gazebo reference="gripper_left_outer_finger_left_link">
     <material>Gazebo/White</material>
-    <mu1>0.9</mu1>
-    <mu2>0.9</mu2>
+    <mu1>100.0</mu1>
+    <mu2>100.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <gazebo reference="gripper_left_outer_finger_right_link">
     <material>Gazebo/White</material>
-    <mu1>0.9</mu1>
-    <mu2>0.9</mu2>
+    <mu1>100.0</mu1>
+    <mu2>100.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <gazebo reference="gripper_left_fingertip_right_link">
     <material>Gazebo/White</material>
-    <mu1>0.9</mu1>
-    <mu2>0.9</mu2>
+    <mu1>100.0</mu1>
+    <mu2>100.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <gazebo reference="gripper_left_fingertip_left_link">
     <material>Gazebo/White</material>
-    <mu1>0.9</mu1>
-    <mu2>0.9</mu2>
+    <mu1>100.0</mu1>
+    <mu2>100.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <gazebo reference="gripper_left_base_link">
     <material>Gazebo/DarkGrey</material>
-    <mu1>0.9</mu1>
-    <mu2>0.9</mu2>
+    <mu1>100.0</mu1>
+    <mu2>100.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <!-- Screw links -->
   <gazebo reference="gripper_left_finger_joint">
@@ -1916,24 +1940,36 @@
   <!-- Base finger links -->
   <gazebo reference="gripper_left_base_finger_left_link">
     <material>Gazebo/DarkGrey</material>
-    <mu1>0.9</mu1>
-    <mu2>0.9</mu2>
+    <mu1>100.0</mu1>
+    <mu2>100.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <gazebo reference="gripper_left_base_finger_right_link">
     <material>Gazebo/DarkGrey</material>
-    <mu1>0.9</mu1>
-    <mu2>0.9</mu2>
+    <mu1>100.0</mu1>
+    <mu2>100.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <!-- Base finger links -->
   <gazebo reference="gripper_left_base_finger_left_link">
     <material>Gazebo/DarkGrey</material>
-    <mu1>0.9</mu1>
-    <mu2>0.9</mu2>
+    <mu1>100.0</mu1>
+    <mu2>100.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <gazebo reference="gripper_left_base_finger_right_link">
     <material>Gazebo/DarkGrey</material>
-    <mu1>0.9</mu1>
-    <mu2>0.9</mu2>
+    <mu1>100.0</mu1>
+    <mu2>100.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <!-- PAL Pro Prototype -->
   <!-- <xacro:if value="${type == 'pal-pro-gripper-prototype'}">
@@ -2289,6 +2325,9 @@
   <gazebo reference="gripper_right_grasping_link">
     <material>Gazebo/Blue</material>
     <turnGravityOff>true</turnGravityOff>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <joint name="gripper_right_grasping_frame_joint" type="fixed">
     <parent link="gripper_right_base_link"/>
@@ -2580,38 +2619,59 @@
   <!-- Gazebo config -->
   <gazebo reference="gripper_right_inner_finger_left_link">
     <material>Gazebo/White</material>
-    <mu1>0.9</mu1>
-    <mu2>0.9</mu2>
+    <mu1>100.0</mu1>
+    <mu2>100.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <gazebo reference="gripper_right_inner_finger_right_link">
     <material>Gazebo/White</material>
-    <mu1>0.9</mu1>
-    <mu2>0.9</mu2>
+    <mu1>100.0</mu1>
+    <mu2>100.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <gazebo reference="gripper_right_outer_finger_left_link">
     <material>Gazebo/White</material>
-    <mu1>0.9</mu1>
-    <mu2>0.9</mu2>
+    <mu1>100.0</mu1>
+    <mu2>100.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <gazebo reference="gripper_right_outer_finger_right_link">
     <material>Gazebo/White</material>
-    <mu1>0.9</mu1>
-    <mu2>0.9</mu2>
+    <mu1>100.0</mu1>
+    <mu2>100.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <gazebo reference="gripper_right_fingertip_right_link">
     <material>Gazebo/White</material>
-    <mu1>0.9</mu1>
-    <mu2>0.9</mu2>
+    <mu1>100.0</mu1>
+    <mu2>100.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <gazebo reference="gripper_right_fingertip_left_link">
     <material>Gazebo/White</material>
-    <mu1>0.9</mu1>
-    <mu2>0.9</mu2>
+    <mu1>100.0</mu1>
+    <mu2>100.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <gazebo reference="gripper_right_base_link">
     <material>Gazebo/DarkGrey</material>
-    <mu1>0.9</mu1>
-    <mu2>0.9</mu2>
+    <mu1>100.0</mu1>
+    <mu2>100.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <!-- Screw links -->
   <gazebo reference="gripper_right_finger_joint">
@@ -2627,24 +2687,36 @@
   <!-- Base finger links -->
   <gazebo reference="gripper_right_base_finger_left_link">
     <material>Gazebo/DarkGrey</material>
-    <mu1>0.9</mu1>
-    <mu2>0.9</mu2>
+    <mu1>100.0</mu1>
+    <mu2>100.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <gazebo reference="gripper_right_base_finger_right_link">
     <material>Gazebo/DarkGrey</material>
-    <mu1>0.9</mu1>
-    <mu2>0.9</mu2>
+    <mu1>100.0</mu1>
+    <mu2>100.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <!-- Base finger links -->
   <gazebo reference="gripper_right_base_finger_left_link">
     <material>Gazebo/DarkGrey</material>
-    <mu1>0.9</mu1>
-    <mu2>0.9</mu2>
+    <mu1>100.0</mu1>
+    <mu2>100.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <gazebo reference="gripper_right_base_finger_right_link">
     <material>Gazebo/DarkGrey</material>
-    <mu1>0.9</mu1>
-    <mu2>0.9</mu2>
+    <mu1>100.0</mu1>
+    <mu2>100.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <!-- PAL Pro Prototype -->
   <!-- <xacro:if value="${type == 'pal-pro-gripper-prototype'}">
@@ -3241,6 +3313,9 @@
         <collision>gripper_left_fingertip_left_link_collision</collision>
       </contact>
     </sensor>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <gazebo reference="gripper_left_fingertip_right_link">
     <sensor name="gripper_left_fingertip_right_link_contact" type="contact">
@@ -3251,6 +3326,9 @@
         <collision>gripper_left_fingertip_right_link_collision</collision>
       </contact>
     </sensor>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <gazebo reference="gripper_left_inner_finger_left_link">
     <sensor name="gripper_left_inner_finger_left_link_contact" type="contact">
@@ -3261,6 +3339,9 @@
         <collision>gripper_left_inner_finger_left_link_collision</collision>
       </contact>
     </sensor>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <gazebo reference="gripper_left_inner_finger_right_link">
     <sensor name="gripper_left_inner_finger_right_link_contact" type="contact">
@@ -3271,6 +3352,9 @@
         <collision>gripper_left_inner_finger_right_link_collision</collision>
       </contact>
     </sensor>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <gazebo reference="gripper_left_outer_finger_left_link">
     <sensor name="gripper_left_outer_finger_left_link_contact" type="contact">
@@ -3281,6 +3365,9 @@
         <collision>gripper_left_outer_finger_left_link_collision</collision>
       </contact>
     </sensor>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <gazebo reference="gripper_left_outer_finger_right_link">
     <sensor name="gripper_left_outer_finger_right_link_contact" type="contact">
@@ -3291,6 +3378,9 @@
         <collision>gripper_left_outer_finger_right_link_collision</collision>
       </contact>
     </sensor>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <gazebo reference="gripper_right_fingertip_left_link">
     <sensor name="gripper_right_fingertip_left_link_contact" type="contact">
@@ -3301,6 +3391,9 @@
         <collision>gripper_right_fingertip_left_link_collision</collision>
       </contact>
     </sensor>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <gazebo reference="gripper_right_fingertip_right_link">
     <sensor name="gripper_right_fingertip_right_link_contact" type="contact">
@@ -3311,6 +3404,9 @@
         <collision>gripper_right_fingertip_right_link_collision</collision>
       </contact>
     </sensor>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <gazebo reference="gripper_right_inner_finger_left_link">
     <sensor name="gripper_right_inner_finger_left_link_contact" type="contact">
@@ -3321,6 +3417,9 @@
         <collision>gripper_right_inner_finger_left_link_collision</collision>
       </contact>
     </sensor>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <gazebo reference="gripper_right_inner_finger_right_link">
     <sensor name="gripper_right_inner_finger_right_link_contact" type="contact">
@@ -3331,6 +3430,9 @@
         <collision>gripper_right_inner_finger_right_link_collision</collision>
       </contact>
     </sensor>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <gazebo reference="gripper_right_outer_finger_left_link">
     <sensor name="gripper_right_outer_finger_left_link_contact" type="contact">
@@ -3341,6 +3443,9 @@
         <collision>gripper_right_outer_finger_left_link_collision</collision>
       </contact>
     </sensor>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <gazebo reference="gripper_right_outer_finger_right_link">
     <sensor name="gripper_right_outer_finger_right_link_contact" type="contact">
@@ -3351,5 +3456,8 @@
         <collision>gripper_right_outer_finger_right_link_collision</collision>
       </contact>
     </sensor>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <minDepth>0.001</minDepth>
   </gazebo>
 </robot>
