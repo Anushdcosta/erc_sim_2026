@@ -423,53 +423,54 @@ class GraspCoordinator(Node):
                     while not self.proceed_extract_flag:
                         sim_sleep(0.5)
                         
-                    # Phase 1: Straight Extraction
-                    self.get_logger().info("Grasp confirmed. Phase 1: Extracting straight back...")
-                    twist.linear.x = -0.1
-                    drive_distance(0.20)
-                    
-                    # Phase 2: Curving Extraction
-                    self.get_logger().info("Phase 2: Pre-calculating curving extraction trajectory...")
+                    # Pre-calculate Curving Trajectory BEFORE driving!
+                    self.get_logger().info("Grasp confirmed. Pre-calculating extraction trajectory...")
                     
                     extraction_dist = 0.28
                     extraction_duration = extraction_dist / 0.1
                     steps = 30
                     dt = extraction_duration / steps
                     
-                    trajectory_joints = []
-                    current_guess = list(best_joints)
-                    
                     import math
-                    import numpy as np
+                    
+                    # Dynamically determine the correct pitch direction for the wrist!
+                    # The wrist roll joint might be rotated 180 degrees if the IK found an "elbow up" solution.
+                    # We test adding a small angle to the wrist pitch joint and check if it pitches the X axis UP or DOWN using FK!
+                    test_joints = list(best_joints)
+                    test_joints[7] += 0.1
+                    
+                    fk_orig = self.arm_chain.forward_kinematics(best_joints)
+                    fk_test = self.arm_chain.forward_kinematics(test_joints)
+                    
+                    if fk_test[:3, 0][2] > fk_orig[:3, 0][2]:
+                        pitch_sign = 1.0
+                    else:
+                        pitch_sign = -1.0
+                        
+                    self.get_logger().info(f"Dynamically determined wrist pitch sign: {pitch_sign}")
+                    
+                    trajectory_joints = []
                     for step in range(steps):
                         progress = step / float(steps - 1)
-                        # Pitch up to 75 degrees
-                        pitch_angle = progress * math.radians(75) 
-                        # Lift up to 10cm to ensure the wrist clears the shelf edge as it pitches
-                        current_z = self.target_xyz[2] + progress * 0.10
                         
-                        current_target = [self.target_xyz[0], self.target_xyz[1], current_z]
-                        R_pitch = np.array([
-                            [math.cos(pitch_angle), 0, math.sin(pitch_angle)],
-                            [0, 1, 0],
-                            [-math.sin(pitch_angle), 0, math.cos(pitch_angle)]
-                        ])
-                        current_orientation = target_orientation.dot(R_pitch)
+                        current_arm = list(best_joints[2:9])
+                        # Pitch the wrist by 50 degrees to safely clear the shelf and tilt the book backwards
+                        current_arm[5] += pitch_sign * progress * math.radians(50) 
                         
-                        res = self.arm_chain.inverse_kinematics(
-                            target_position=current_target,
-                            target_orientation=current_orientation,
-                            orientation_mode="all",
-                            initial_position=current_guess
-                        )
-                        current_guess = list(res)
-                        trajectory_joints.append(res[2:9].tolist())
+                        trajectory_joints.append(current_arm)
                         
-                    self.get_logger().info("Executing curve extraction...")
+                    # Phase 1: Straight Extraction
+                    self.get_logger().info("Phase 1: Extracting straight back...")
+                    twist.linear.x = -0.1
+                    drive_distance(0.20)
+                    
+                    # Phase 2: Curving Extraction
+                    self.get_logger().info("Phase 2: Executing curve extraction...")
+                    self.move_arm_trajectory(trajectory_joints, dt)
+                    
                     twist.linear.x = -0.1
                     for step in range(steps):
                         self.cmd_vel_pub.publish(twist)
-                        self.move_arm(trajectory_joints[step])
                         sim_sleep(dt)
                         
                     # Stop base
@@ -507,6 +508,22 @@ class GraspCoordinator(Node):
         point.positions = positions
         point.time_from_start = Duration(sec=3, nanosec=0)
         msg.points.append(point)
+        self.right_arm_pub.publish(msg)
+        
+    def move_arm_trajectory(self, trajectory_joints, dt):
+        msg = JointTrajectory()
+        msg.joint_names = [f'arm_right_{i}_joint' for i in range(1, 8)]
+        
+        for step, positions in enumerate(trajectory_joints):
+            point = JointTrajectoryPoint()
+            point.positions = positions
+            
+            t = (step + 1) * dt
+            sec = int(t)
+            nanosec = int((t - sec) * 1e9)
+            point.time_from_start = Duration(sec=sec, nanosec=nanosec)
+            msg.points.append(point)
+            
         self.right_arm_pub.publish(msg)
         
     def move_torso(self, positions):
